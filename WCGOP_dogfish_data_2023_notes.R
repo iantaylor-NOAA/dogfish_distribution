@@ -39,13 +39,25 @@ for (gear in c("Bottom Trawl", "Midwater Trawl", "Hook & Line")) {
     )
 }
 
+# plot all years/months for each gear including California
+for (gear in c("Bottom Trawl", "Midwater Trawl", "Hook & Line")) {
+  WCGOP_DOGFISH |>
+    bin_dat(
+      years = 2002:2022,
+      my_gear = gear,
+      months = 1:12,
+      subdir = "annual_with_CA",
+      lat_bin_min = 32
+    )
+}
+
 # plot all years/months for each gear within early/late groups of years
 for (gear in c("Bottom Trawl", "Midwater Trawl", "Hook & Line")) {
   for (year_block in 1:2) {
     if (year_block == 1) {
-      years = 2002:2012
+      years <- 2002:2012
     } else {
-      years = 2013:2022
+      years <- 2013:2022
     }
     WCGOP_DOGFISH |>
       bin_dat(
@@ -75,9 +87,9 @@ for (gear in c("Bottom Trawl", "Midwater Trawl", "Hook & Line")) {
   for (seas in 1:4) {
     for (year_block in 1:2) {
       if (year_block == 1) {
-        years = 2002:2012
+        years <- 2002:2012
       } else {
-        years = 2013:2022
+        years <- 2013:2022
       }
       WCGOP_DOGFISH |>
         bin_dat(
@@ -87,6 +99,20 @@ for (gear in c("Bottom Trawl", "Midwater Trawl", "Hook & Line")) {
           subdir = "quarterly_early-late"
         )
     }
+  }
+}
+
+# plot seasons across all years for each gear, including California
+for (gear in c("Bottom Trawl", "Midwater Trawl", "Hook & Line")) {
+  for (seas in 1:4) {
+    WCGOP_DOGFISH |>
+      bin_dat(
+        years = 2002:2022,
+        my_gear = gear,
+        months = 1:3 + (seas - 1) * 3,
+        subdir = "quarterly_with_CA",
+        lat_bin_min = 32
+      )
   }
 }
 

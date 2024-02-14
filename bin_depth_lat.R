@@ -133,8 +133,8 @@ bin_dat <- function(
     ) +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(expand = c(0, 0)) +
-    xlim(-depth_bin_max, -depth_bin_min) + 
-    ylim(lat_bin_min, lat_bin_max) + 
+    xlim(-depth_bin_max, -depth_bin_min) +
+    ylim(lat_bin_min, lat_bin_max) +
     xlab(paste0("Depth ", ifelse(meters, "(m)", "(fathoms)"))) +
     ylab(paste0("Latitude (degrees N)"))
 
@@ -193,6 +193,10 @@ bin_dat <- function(
     filename <- paste0(filename, ".png")
     filename <- file.path(subdir, filename)
     # save plot
-    p |> ggsave(filename = file.path("plots", filename))
+    p |> ggsave(
+      filename = file.path("plots", filename),
+      width = 7,
+      height = ifelse(lat_bin_min < 42, 10, 7)
+    )
   }
 }
