@@ -160,7 +160,7 @@ bin_dat <- function(
 
   # add title
   month_string <- ifelse(length(months) == 1,
-    paste0("month ", 1), paste0("months ", min(months), "-", max(months))
+    paste0("month ", months), paste0("months ", min(months), "-", max(months))
   )
   title <- paste0(
     "Dogfish catch rates in ", my_gear,
@@ -186,6 +186,7 @@ bin_dat <- function(
     # create ggplot but don't save
     p
   } else {
+browser()
     # clean up filename
     filename <- gsub(pattern = "Dogfish catch rates in ", replacement = "", x = title, fixed = TRUE)
     filename <- gsub(pattern = " & ", replacement = "_", x = filename, fixed = TRUE)
