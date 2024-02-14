@@ -84,7 +84,7 @@ for (gear in c("Bottom Trawl", "Midwater Trawl", "Hook & Line")) {
           years = years,
           my_gear = gear,
           months = 1:3 + (seas - 1) * 3,
-          subdir = "quarterly"
+          subdir = "quarterly_early-late"
         )
     }
   }
